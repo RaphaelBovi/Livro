@@ -13,24 +13,26 @@ public class Livro {
 
     @Column(name = "produtora")
     private String produtora;
+
     @Column(name = "data_de_lançamento")
     private String dataLancamento;
 
     @Column(name = "descrição_do_livro")
     private String descricao;
 
-    @ManyToMany
-    private Autor autor;
+    @Column(name = "autor")
+    private String autor;
 
     public Livro() {
     }
 
-    public Livro(Long id, String nomeLivro, String produtora, String dataLancamento, String descricao) {
+    public Livro(Long id, String nomeLivro, String produtora, String dataLancamento, String descricao, String autor) {
         this.id = id;
         this.nomeLivro = nomeLivro;
         this.produtora = produtora;
         this.dataLancamento = dataLancamento;
         this.descricao = descricao;
+        this.autor = autor;
     }
 
     public Long getId() {
@@ -73,8 +75,11 @@ public class Livro {
         this.descricao = descricao;
     }
 
-    public Autor getAutor() {
+    public String getAutor() {
         return autor;
     }
 
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
 }
