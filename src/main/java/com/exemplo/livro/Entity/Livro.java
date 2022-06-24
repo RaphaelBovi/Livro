@@ -1,7 +1,11 @@
 package com.exemplo.livro.Entity;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
+import javax.persistence.*;
+import java.time.LocalDate;
+
+@Entity
 public class Livro {
 
     @Id
@@ -11,11 +15,9 @@ public class Livro {
     @Column(name = "nome_do_livro")
     private String nomeLivro;
 
-    @Column(name = "produtora")
-    private String produtora;
-
     @Column(name = "data_de_lançamento")
-    private String dataLancamento;
+    @JsonFormat(pattern = "yyyy")
+    private LocalDate dataLancamento;
 
     @Column(name = "descrição_do_livro")
     private String descricao;
@@ -24,12 +26,15 @@ public class Livro {
     private String autor;
 
     public Livro() {
+
     }
 
-    public Livro(Long id, String nomeLivro, String produtora, String dataLancamento, String descricao, String autor) {
+    public Livro(String nomeLivro, String descricao, LocalDate dataLancamento, String autor) {
+    }
+
+    public Livro(Long id, String nomeLivro, LocalDate dataLancamento, String descricao, String autor) {
         this.id = id;
         this.nomeLivro = nomeLivro;
-        this.produtora = produtora;
         this.dataLancamento = dataLancamento;
         this.descricao = descricao;
         this.autor = autor;
@@ -39,47 +44,20 @@ public class Livro {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getNomeLivro() {
         return nomeLivro;
     }
 
-    public void setNomeLivro(String nomeLivro) {
-        this.nomeLivro = nomeLivro;
-    }
-
-    public String getProdutora() {
-        return produtora;
-    }
-
-    public void setProdutora(String produtora) {
-        this.produtora = produtora;
-    }
-
-    public String getDataLancamento() {
+    public LocalDate getDataLancamento() {
         return dataLancamento;
-    }
-
-    public void setDataLancamento(String dataLancamento) {
-        this.dataLancamento = dataLancamento;
     }
 
     public String getDescricao() {
         return descricao;
     }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
     public String getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
-        this.autor = autor;
-    }
 }
