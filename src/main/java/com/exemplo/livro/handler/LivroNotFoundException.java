@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class LivroNotFoundException extends RuntimeException {
 
     public LivroNotFoundException() {
-        super("Solicitação de transação não encontrada ou nula");
+        super("Solicitação do livro não encontrado");
 
     }
 
