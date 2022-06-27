@@ -3,7 +3,7 @@ package com.exemplo.livro.Entity;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 public class Livro {
@@ -16,8 +16,8 @@ public class Livro {
     private String nomeLivro;
 
     @Column(name = "data_de_lançamento")
-    @JsonFormat(pattern = "yyyy")
-    private LocalDate dataLancamento;
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private LocalDateTime dataPublicacao;
 
     @Column(name = "descrição_do_livro")
     private String descricao;
@@ -26,16 +26,12 @@ public class Livro {
     private String autor;
 
     public Livro() {
-
     }
 
-    public Livro(String nomeLivro, String descricao, LocalDate dataLancamento, String autor) {
-    }
-
-    public Livro(Long id, String nomeLivro, LocalDate dataLancamento, String descricao, String autor) {
+    public Livro(Long id, String nomeLivro, LocalDateTime dataPublicacao, String descricao, String autor) {
         this.id = id;
         this.nomeLivro = nomeLivro;
-        this.dataLancamento = dataLancamento;
+        this.dataPublicacao = dataPublicacao;
         this.descricao = descricao;
         this.autor = autor;
     }
@@ -48,8 +44,8 @@ public class Livro {
         return nomeLivro;
     }
 
-    public LocalDate getDataLancamento() {
-        return dataLancamento;
+    public LocalDateTime getDataLancamento() {
+        return dataPublicacao;
     }
 
     public String getDescricao() {
